@@ -16,19 +16,17 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: book/my-book/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: book/my-book
       - name: Build website
         run: npm run build
-        working-directory: book/my-book
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book/my-book/build
+          publish_dir: ./build
           # The following lines configure GitHub Pages correctly
           publish_branch: gh-pages
