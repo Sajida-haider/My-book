@@ -18,7 +18,7 @@ const config: Config = {
   trailingSlash: false,
 
   // Set the production url of your site here
-   url:'https://my-book-5w5ka9gsf-sajida-haiders-projects.vercel.app/',
+   url: 'https://my-book-efxlpl0go-sajida-haiders-projects.vercel.app/',
 
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
