@@ -1,113 +1,60 @@
-import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+// Optional: import prism themes if needed
+import prismThemes from 'prism-react-renderer/themes/github';
+import draculaTheme from 'prism-react-renderer/themes/dracula';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'Bridging the gap between digital AI and physical robots',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
-
-  // Trailing slash configuration for GitHub Pages
+  future: { v4: true },
   trailingSlash: false,
 
-  // Set the production url of your site here
-  url: 'https://my-book-efxlpl0go-sajida-haiders-projects.vercel.app/',
-
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://mybook-murex.vercel.app', // Your live site
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Sajida-haider', // Usually your GitHub org/user name.
-  projectName: 'My-book', // Usually your repo name.
+  organizationName: 'Sajida-haider',
+  projectName: 'My-book',
 
   onBrokenLinks: 'throw',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  i18n: { defaultLocale: 'en', locales: ['en'] },
 
   presets: [
     [
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Enable collapsible categories in sidebar
+          path: 'docs',
+          routeBasePath: '/',  // Important: docs served at root
+          sidebarPath: require.resolve('./sidebars.ts'),
           sidebarCollapsible: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/Sajida-haider/My-book',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
+        blog: false,  // Disable blog
+        theme: { customCss: require.resolve('./src/css/custom.css') },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          filename: 'sitemap.xml',
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
-    colorMode: {
-      respectPrefersColorScheme: true,
-    },
-    // Enable breadcrumbs
-    tableOfContents: {
-      minHeadingLevel: 2,
-      maxHeadingLevel: 5,
-    },
-    docs: {
-      sidebar: {
-        autoCollapseCategories: true, // Collapsible sidebar
-      },
-    },
+    colorMode: { respectPrefersColorScheme: true },
+    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 5 },
+    docs: { sidebar: { autoCollapseCategories: true } },
     navbar: {
       title: 'Physical AI & Robotics',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      logo: { alt: 'My Site Logo', src: 'img/logo.svg' },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Book',
-        },
-        {
-          href: 'https://github.com/Sajida-haider/My-book',
-          label: 'GitHub',
-          position: 'right',
-        },
+        { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Book' },
+        { href: 'https://github.com/Sajida-haider/My-book', label: 'GitHub', position: 'right' },
       ],
     },
     footer: {
@@ -115,42 +62,15 @@ const config: Config = {
       links: [
         {
           title: 'Docs',
-          items: [
-            {
-              label: 'Module 1: ROS 2',
-              to: '/docs/module-1/chapter-1-ros2-fundamentals',
-            },
-          ],
+          items: [{ label: 'Module 1: ROS 2', to: '/module-1/chapter-1-ros2-fundamentals' }],
         },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/Sajida-haider/My-book',
-            },
-          ],
-        },
+        { title: 'More', items: [{ label: 'GitHub', href: 'https://github.com/Sajida-haider/My-book' }] },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics. Built with Docusaurus.`,
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['python', 'bash', 'json'],
-    },
-    // Performance optimizations
-    scripts: [
-      // Add any performance optimization scripts if needed
-    ],
-    stylesheets: [
-      // Optimize loading of fonts
-      {
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap',
-        rel: 'stylesheet',
-      },
-    ],
+    prism: { theme: prismThemes, darkTheme: draculaTheme, additionalLanguages: ['python', 'bash', 'json'] },
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
+
