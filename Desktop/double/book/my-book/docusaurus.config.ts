@@ -79,7 +79,7 @@ const config: Config = {
           label: 'Book',
         },
         {
-          href: 'https://github.com/Sajida-haider/Ai_book_practice',
+          href: 'https://github.com/Sajida-haider/my-book',
           label: 'GitHub',
           position: 'right',
         },
@@ -102,7 +102,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/Sajida-haider/Ai_book_practice',
+              href: 'https://github.com/Sajida-haider/my-book',
             },
           ],
         },
